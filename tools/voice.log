@@ -167,3 +167,7 @@ Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
 Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
 Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
 Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+50 b_ok2 0.0  Опять шесть, хоть рядами, хоть столбиками ответ одинаковый.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+51 b4 0.0  А вот грядка побольше. Пройди по всем лункам.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
