@@ -167,7 +167,7 @@ function regionMus(n){const M=WALK[(n-1)%5],CH=WALKCH[(n-1)%5];musStart({bpm:[11
  beat(i,w){const m=M[i%16];if(m)boxNote(midi(m+12),w,.06,1.1);if(i%2===0)pluck(midi(CHORDS[CH[i%16]][0]+12),0,.035)}})}
 // ---- титул ----
 SC.title={enter(){cast=[];musMenu()},
- draw(){bgDraw('title');const[lx0,ly0]=bgXY(640,118);const lw=Math.min(700,(safeR()-safeL())*.6);const lh=lw/aspect('lplank')*.9;const lx=clamp(lx0,safeL()+lw/2,safeR()-lw/2),ly=Math.max(safeT()+lh/2+6,ly0);
+ draw(){bgDraw('title');const[lx0,ly0]=bgXY(640,118);const lw=Math.min(860,(safeR()-safeL())*.7);const lh=130;const lx=clamp(lx0,safeL()+lw/2,safeR()-lw/2),ly=Math.max(safeT()+lh/2+6,ly0);
   X.save();X.translate(lx,ly);X.rotate(Math.sin(T*1.1)*.012);slice3('lplank',0,0,lw,lh,{cap:1.3});X.restore();
   textIn('Варя и Тетрадная страна',lx,ly-2,lw*.82,lh*.62,76,'#fff6dc',{f:FONT,st:'#3a1a06',lw:9,id:'logo'});
   textIn('игра про клеточки',lx,ly+lh/2+30,lw*.8,52,46,'#fff36a',{f:FONT,st:'#1d3b8a',lw:8,id:'logo2'});
@@ -208,7 +208,7 @@ SC.map={enter(){cast=[hero('varya',0,{h:170})];GOAL='';musMenu();ZS=null;SC.map.
    if(!open)spr('lock',x,y,74);if(done)spr('star',x+w*.36,y-h*.3,66,{rot:Math.sin(T*2)*.1});if(SV.sec[i])fitSpr(STICK[i],x-w*.38,y-h*.3,54);
    plaque(z.name,x,Math.min(y+h*.5+30,safeB()-110),Math.max(200,230*m.k+40),{size:34,id:'zname',sp:'lplank',h:74,iw:.86,ih:.8,min:20})});
   {const w=5*50+30,y=safeB()-38;X.save();X.fillStyle='rgba(30,40,90,.55)';rr(640-w/2,y-30,w,60,30);X.fill();X.restore();for(let i=0;i<5;i++)spr(SV.stars[i]?'star':'star_dark',640-100+i*50,y,46)}
-  if(SV.stars.every(v=>v)){const[fx,fy]=[m.x+1090*m.k,Math.min(m.y+640*m.k,safeB()-60)];boardBtn('fin',Math.min(fx,safeR()-130),fy,240,'Праздник',()=>go('fin'),{pulse:!SV.fin,size:44});if(SV.fin)spr('medal',Math.min(fx,safeR()-130)+100,fy-40,70)}
+  if(SV.stars.every(v=>v)){const[fx,fy]=[m.x+1090*m.k,Math.min(m.y+640*m.k,safeB()-60)];boardBtn('fin',Math.min(fx,safeR()-262),fy,240,'Праздник',()=>go('fin'),{pulse:!SV.fin,size:44});if(SV.fin)spr('medal',Math.min(fx,safeR()-262)+100,fy-40,70)}
   btn('album','album',safeR()-66,safeB()-70,120,()=>go('album'),{pulse:SV.sec.some(v=>v)&&!SV.albumSeen})},
  go(n,sc){const M=SC.map;if(M.mv)return;const a=M.at,path=[];if(a===n){go(sc);return}const s=Math.sign(n-a);for(let i=a;i!==n+s;i+=s)path.push(i);
   M.mv={path,t0:T,d:G.fast?.05:.55*(path.length-1),sc};SFX.zip()}};

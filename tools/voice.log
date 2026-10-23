@@ -252,3 +252,10 @@ Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
 80 e_q1 0.222  Вряду три клетки, рядов два.  Сколько клеток всего?
 Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
 Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+81 e_q2 0.25  в ряду 5 клеток, рядов 2.  Сколько всего?
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
