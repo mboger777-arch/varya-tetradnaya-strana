@@ -6,8 +6,9 @@ R=os.path.dirname(os.path.dirname(os.path.abspath(__file__)));OUT=R+'/assets/voi
 RO='/home/box/tts/refs/ostrov';RY='/home/box/tts/refs/yarmarka';RP='/home/box/tts/refs/prost'
 TO=json.load(open(RO+'/texts.json'));TY=json.load(open(RY+'/texts.json'));TP=json.load(open(RP+'/texts.json'));RJ=json.load(open('/home/box/tts/refs/refs.json'))
 RYJ=json.load(open(RY+'/texts.json'))
-REF={'lira':(f"{RO}/mey_1.wav",TO['mey']),'kov':(f"{RO}/tim_1.wav",TO['tim']),'dzin':tuple(RJ['zhuzha']),
-     'glusha':tuple(RJ['malina']),'narrator':(f"{RY}/narrator_1.wav",TY['narrator'])}
+REF={'varya':(f"{RO}/mey_1.wav",TO['mey']),'kv':(f"{RO}/tim_1.wav",TO['tim']),'shur':tuple(RJ['zhuzha']),
+     'klyaksa':tuple(RJ['shchelk']),'granny':tuple(RJ['malina']),'snail':tuple(RJ['bublik']),'zebra':(f"{RY}/nika_1.wav",TY['nika']),
+     'cirkul':(f"{RP}/granit_1.wav",TP['granit']),'narrator':(f"{RY}/narrator_1.wav",TY['narrator'])}
 CHAIN=("highpass=f=60,silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.05,areverse,"
  "silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.05,areverse,"
  "afade=t=in:d=0.02,areverse,afade=t=in:d=0.06,areverse,loudnorm=I=-16:TP=-1.5:LRA=11,adelay=60,apad=pad_dur=0.12")
@@ -18,7 +19,7 @@ def spoken(o):
     return re.sub(r'\s+',' ',t).strip()
 lines=json.load(open(R+'/tools/lines.json'));jobs=[]
 for o in lines:
-    h=hashlib.sha1(f"z68|{o['who']}|{spoken(o)}".encode()).hexdigest()[:8];o['file']=f"{o['k']}_{h}.mp3"
+    h=hashlib.sha1(f"v311|{o['who']}|{spoken(o)}".encode()).hexdigest()[:8];o['file']=f"{o['k']}_{h}.mp3"
     if not os.path.exists(f"{OUT}/{o['file']}"): jobs.append(o)
 print('jobs',len(jobs),flush=True)
 def man():

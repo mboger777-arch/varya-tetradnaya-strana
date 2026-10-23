@@ -1,0 +1,162 @@
+{
+ "snail": {
+  "w": 584,
+  "h": 764,
+  "edge": false
+ },
+ "granny": {
+  "w": 380,
+  "h": 821,
+  "edge": false
+ },
+ "zebra": {
+  "w": 469,
+  "h": 808,
+  "edge": false
+ },
+ "cirkul": {
+  "w": 394,
+  "h": 831,
+  "edge": false
+ },
+ "b_home": {
+  "w": 393,
+  "h": 399,
+  "edge": false
+ },
+ "b_erase": {
+  "w": 429,
+  "h": 462,
+  "edge": false
+ },
+ "b_sound": {
+  "w": 675,
+  "h": 688,
+  "edge": false
+ },
+ "b_ok": {
+  "w": 673,
+  "h": 688,
+  "edge": false
+ },
+ "b_next": {
+  "w": 386,
+  "h": 334,
+  "edge": false
+ },
+ "eraser": {
+  "w": 505,
+  "h": 700,
+  "edge": false
+ },
+ "corner": {
+  "w": 501,
+  "h": 700,
+  "edge": false
+ },
+ "tulip": {
+  "w": 452,
+  "h": 700,
+  "edge": false
+ },
+ "album": {
+  "w": 598,
+  "h": 700,
+  "edge": false
+ },
+ "medal": {
+  "w": 405,
+  "h": 700,
+  "edge": false
+ },
+ "letter": {
+  "w": 700,
+  "h": 615,
+  "edge": false
+ },
+ "hole": {
+  "w": 678,
+  "h": 619,
+  "edge": false
+ },
+ "tulip2": {
+  "w": 491,
+  "h": 700,
+  "edge": false
+ },
+ "blot": {
+  "w": 695,
+  "h": 607,
+  "edge": false
+ },
+ "chest": {
+  "w": 668,
+  "h": 700,
+  "edge": false
+ },
+ "house": {
+  "w": 608,
+  "h": 700,
+  "edge": false
+ },
+ "burst": {
+  "w": 659,
+  "h": 686,
+  "edge": false
+ },
+ "key": {
+  "w": 474,
+  "h": 700,
+  "edge": false
+ },
+ "sticker": {
+  "w": 689,
+  "h": 700,
+  "edge": false
+ },
+ "rainbow": {
+  "w": 700,
+  "h": 498,
+  "edge": false
+ },
+ "varya": {
+  "w": 457,
+  "h": 811,
+  "edge": false
+ },
+ "varya_cheer": {
+  "w": 468,
+  "h": 770,
+  "edge": false
+ },
+ "varya_point": {
+  "w": 448,
+  "h": 810,
+  "edge": false
+ },
+ "varya_think": {
+  "w": 402,
+  "h": 847,
+  "edge": false
+ },
+ "klyaksa": {
+  "w": 454,
+  "h": 840,
+  "edge": false
+ },
+ "klyaksa_angry": {
+  "w": 392,
+  "h": 837,
+  "edge": false
+ },
+ "klyaksa_kind": {
+  "w": 496,
+  "h": 838,
+  "edge": false
+ },
+ "klyaksa_wow": {
+  "w": 545,
+  "h": 839,
+  "edge": false
+ }
+}

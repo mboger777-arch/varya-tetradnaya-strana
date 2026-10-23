@@ -18,16 +18,15 @@ def clean(a):
         rgb=a[...,:3].copy();rgb[edge]=a[...,:3][idx[0][edge],idx[1][edge]];a[...,:3]=rgb
     a[...,3]=al;return a
 SHEETS={
- 'heroes_v1':('sprites',['lira','kov','dzin','glusha']),
- 'lira_poses':('sprites',['lira_cheer','lira_point','lira_think']),
- 'kov_dzin_poses':('sprites',['kov_cheer','kov_wow','dzin_cheer','dzin_sad']),
- 'glusha_poses':('sprites',['glusha_laugh','glusha_angry','glusha_kind','glusha_yawn']),
- 'ui_sheet':('ui',['b_ok','b_undo','b_home','b_sound','b_next','board','tile','lock','star','bubble']),
- 'ui_wide':('ui',['lplank','wbubble','banner']),
- 'props_sheet':('ui',['star_lit','star_dark','comet','note','drum','bell','medal','rotate','puff','plank'])}
-KEY={'ui_wide'}
+ 'varya_poses':('sprites',['varya','varya_cheer','varya_point','varya_think']),
+ 'kv_shur':('sprites',['kv_sniff','kv_cheer','shur','shur_cheer','shur_point','kv']),
+ 'klyaksa_poses':('sprites',['klyaksa','klyaksa_angry','klyaksa_kind','klyaksa_wow']),
+ 'npc_sheet':('sprites',['snail','granny','zebra','cirkul']),
+ 'ui_sheet':('ui',['b_home','b_erase','b_sound','b_ok','b_next','eraser','corner','tulip','album','medal']),
+ 'props_sheet':('ui',['letter','hole','tulip2','blot','chest','house','burst','key','sticker','rainbow'])}
+KEY=set()
 ONLYN=set(os.environ.get('ONLY','').split(','))-{''}
-FILL={'lplank','wbubble','banner','board','bubble','tile','b_ok','b_undo','b_home','b_sound','b_next','star','star_lit','star_dark','medal','drum','plank','puff'}
+FILL={'b_ok','b_erase','b_home','b_sound','b_next','eraser','corner','album','medal','letter','chest','house','sticker','rainbow','blot','burst'}
 INFO=json.load(open('tools/cut_info.json')) if os.path.exists('tools/cut_info.json') else {}
 only=sys.argv[1:]
 for sh,(dst,names) in SHEETS.items():
@@ -39,10 +38,12 @@ for sh,(dst,names) in SHEETS.items():
     else: m=np.array(remove(img,session=S,only_mask=True,post_process_mask=True))>90
     COLS=json.load(open('tools/cols.json')) if os.path.exists('tools/cols.json') else {}
     if sh in COLS:
-        l2,n2=ndimage.label(ndimage.binary_dilation(m,iterations=2));cb=[0]+[c*Wd for c in COLS[sh]]+[Wd];lab=np.zeros_like(l2)
+        mm=ndimage.binary_dilation(m,iterations=2)
+        for c in COLS[sh]: mm[:,int(c*Wd)-3:int(c*Wd)+3]=False
+        l2,n2=ndimage.label(mm);cb=[0]+[c*Wd for c in COLS[sh]]+[Wd];lab=np.zeros_like(l2)
         cms=ndimage.center_of_mass(np.ones_like(l2),l2,range(1,n2+1));szs=ndimage.sum(np.ones_like(l2),l2,range(1,n2+1))
         for i,(cy,cx) in enumerate(cms):
-            if szs[i]<0.002*m.size:continue
+            if szs[i]<0.0002*m.size:continue
             col=[j for j in range(len(cb)-1) if cb[j]<=cx<cb[j+1]][0];lab[l2==i+1]=col+1
         n=len(cb)-1
     else: lab,n=ndimage.label(ndimage.binary_dilation(m,iterations={'ui_sheet':3,'props_sheet':4}.get(sh,int(Wd*.012))))

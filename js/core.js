@@ -1,5 +1,5 @@
 'use strict';
-// ===== Звёздная песня — движок (canvas 1280x720 + расширение на широкие экраны) =====
+// ===== Варя и Тетрадная страна — движок (canvas 1280x720 + расширение на широкие экраны) =====
 const LOADQ=[];{const _I=window.Image;window.Image=function(w,h){const i=new _I(w,h);LOADQ.push(i);return i};window.Image.prototype=_I.prototype}
 let LOADED=false,LOADT0=performance.now(),FONTOK=false;
 const C=document.getElementById('c'),X=C.getContext('2d');
@@ -23,16 +23,16 @@ setInterval(()=>{const[w,h]=vpWH();if(w!==_lastW||h!==_lastH||PORTRAIT()!==_wasP
 // ---- картинки ----
 const IM={};function img(n,src){const i=new Image();i.src=src;IM[n]=i;return i}
 const okI=i=>i&&i.complete&&i.naturalWidth>0;
-['title','map','l1','l2','l3','l4','l5','fin'].forEach(n=>img('bg_'+n,'assets/bg/'+n+'.jpg'));
-const BLINKS=['lira','lira_think','kov','dzin','glusha','glusha_angry','glusha_kind'];const SPR=['lira','lira_cheer','lira_point','lira_think','kov','kov_cheer','kov_wow','dzin','dzin_cheer','dzin_sad','glusha','glusha_laugh','glusha_angry','glusha_kind','glusha_yawn'];SPR.forEach(n=>{img(n,'assets/sprites/'+n+'.png');if(BLINKS.includes(n))img(n+'_blink','assets/sprites/'+n+'_blink.png')});
-['b_ok','b_undo','b_home','b_sound','b_next','board','tile','lock','star','bubble','star_lit','star_dark','comet','note','drum','bell','medal','rotate','puff','plank','shadow','lplank','wbubble','banner'].forEach(n=>img(n,'assets/ui/'+n+'.png'));
+['title','map','r1','r2','r3','r4','r5','fin','secret'].forEach(n=>img('bg_'+n,'assets/bg/'+n+'.jpg'));
+const BLINKS=['varya','varya_cheer','varya_point','kv','kv_sniff','shur','shur_point','klyaksa','klyaksa_angry','klyaksa_kind','klyaksa_wow','snail','granny','zebra','cirkul'];const SPR=['varya','varya_cheer','varya_point','varya_think','kv','kv_sniff','kv_cheer','shur','shur_cheer','shur_point','klyaksa','klyaksa_angry','klyaksa_kind','klyaksa_wow','snail','granny','zebra','cirkul'];SPR.forEach(n=>{img(n,'assets/sprites/'+n+'.png');if(BLINKS.includes(n))img(n+'_blink','assets/sprites/'+n+'_blink.png')});
+['b_ok','b_erase','b_home','b_sound','b_next','board','lock','star','bubble','star_dark','medal','rotate','puff','shadow','lplank','wbubble','eraser','corner','tulip','album','letter','hole','tulip2','blot','chest','house','burst','key','sticker','rainbow'].forEach(n=>img(n,'assets/ui/'+n+'.png'));
 const FONT='FairyLogo, Georgia, serif',BODY='Pangolin, "Comic Sans MS", sans-serif',NUM='NunitoLogo, Arial Black, sans-serif';
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),rnd=(a,b)=>a+Math.random()*(b-a),ease=t=>t<0?0:t>1?1:1-Math.pow(1-t,3),lerp=(a,b,t)=>a+(b-a)*t;
 const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
 // ---- сохранение ----
-let SV;try{SV=JSON.parse(localStorage.getItem('zvezd68'))}catch(e){}
+let SV;try{SV=JSON.parse(localStorage.getItem('varya311'))}catch(e){}
 if(!SV||!SV.stars)SV={stars:[0,0,0,0,0],open:1,intro:0,fin:0};if(!SV.sec)SV.sec=[0,0,0,0,0];
-function save(){try{localStorage.setItem('zvezd68',JSON.stringify(SV))}catch(e){}}
+function save(){try{localStorage.setItem('varya311',JSON.stringify(SV))}catch(e){}}
 // ---- звук ----
 var AC=null;function ac(){if(!AC){try{AC=new(window.AudioContext||window.webkitAudioContext)()}catch(e){}}if(AC&&AC.state==='suspended')AC.resume();return AC}
 function tone(f,d,type,v,when,slide){const a=ac();if(!a||G.mute)return;const t=a.currentTime+(when||0),o=a.createOscillator(),g=a.createGain();o.type=type||'sine';o.frequency.setValueAtTime(f,t);if(slide)o.frequency.exponentialRampToValueAtTime(slide,t+d);g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v||.1,t+.01);g.gain.exponentialRampToValueAtTime(.001,t+d);o.connect(g).connect(a.destination);o.start(t);o.stop(t+d+.05)}
@@ -86,7 +86,7 @@ function bgY0(){const v=vis();return v.y0+v.h-720*bgScale()}
 function bgX0(){return 640-640*bgScale()}
 function bgXY(px,py){const s=bgScale();return[bgX0()+px*s,bgY0()+py*s]}
 // линия земли (y в пикселях фона 1280x720) — герои стоят на ней
-const GROUND={title:690,map:716,l1:690,l2:650,l3:688,l4:676,l5:684,fin:690};let BGN='title',GND=[];
+const GROUND={title:690,map:716,r1:700,r2:700,r3:700,r4:700,r5:700,fin:700,secret:690};let BGN='title',GND=[];
 function gY(n){return bgY0()+(GROUND[n||BGN]||700)*bgScale()}
 function bgDraw(n,dim,ox){const v=vis(),s=bgScale();BGN=n;const b=IM['bg_'+n];
  if(okI(b))X.drawImage(b,bgX0()+(ox||0),bgY0(),1280*s,720*s);
@@ -117,10 +117,10 @@ function boardBtn(id,x,y,w,label,fn,o){o=o||{};const h=w/aspect('board');x=Math.
  X.save();X.translate(x,y);X.scale(k,k);textIn(label,0,0,w*.78,h*.56,o.size||60,'#fff6dc',{f:FONT,st:'#3a1a06',lw:7,id});X.restore()}
 // ---- герои: позы, дыхание (только равномерный масштаб), прыжки на землю, взгляд на ребёнка ----
 let cast=[];
-const HEROH={lira:410,kov:340,dzin:175,glusha:345};
+const HEROH={varya:290,kv:150,shur:150,klyaksa:250,snail:200,granny:290,zebra:270,cirkul:290};
 // доля ширины спрайта, которую герой «занимает» в раскладке (руки Бита могут нависать над краем поля)
-const LWK={lira:.78,kov:.86,glusha:.86,dzin:.9};
-const NAMES={lira:'Лира',kov:'Ковшик',dzin:'Дзинь',glusha:'Глуша',narrator:''};
+const LWK={varya:.7,kv:.9,shur:.8,klyaksa:.8};
+const NAMES={varya:'Варя',kv:'Квадратик',shur:'Шуршик',klyaksa:'Клякса',snail:'Улитка',granny:'Бабушка Линейка',zebra:'Зебра',cirkul:'Мастер Циркуль',narrator:''};
 function hero(n,x,o){o=o||{};return Object.assign({n,x,pose:'',h:HEROH[n]||400,jump:0,wob:0,flip:false,ph:Math.random()*6},o)}
 function pose(n,p,dur){const c=cast.find(c=>c.n===n);if(c){c.pose=p;c.poseT=dur?T+dur:0;c.pf=T}}
 function cheer(){cast.forEach((c,i)=>{c.jump=T+i*.1;if(IM[c.n+'_cheer'])pose(c.n,'cheer',1.6)});SFX.ok()}
@@ -132,12 +132,12 @@ const POSEK={};
 function blinkK(c,k){if(c.nb==null)c.nb=T+1+Math.random()*3;if(T>c.nb+.14){c.nb=T+2.5+Math.random()*2.5;c.db=Math.random()<.25}
  const b=(T>c.nb&&T<c.nb+.13)||(c.db&&T>c.nb-.3&&T<c.nb-.18);return b&&okI(IM[k+'_blink'])?k+'_blink':k}
 function drawHero(c){const k0=spriteOf(c),k=blinkK(c,k0),im=IM[k];if(!okI(im))return;const h=c.h*(c.k||1)*(POSEK[k]||1),w=h*im.naturalWidth/im.naturalHeight;
- const talking=talk&&talk.who===c.n;const br=1+Math.sin(T*2.1+c.ph)*.007;let dy=0,rot=Math.sin(T*1.2+c.ph)*.012;
+ const talking=talk&&talk.who===c.n;const br=1+Math.sin(T*2.1+c.ph)*.007;let dy=-(c.bob||0),rot=Math.sin(T*1.2+c.ph)*.012;
  if(talking)dy-=Math.abs(Math.sin((T-talk.t0)*4.2))*5;// говорит — лёгкое покачивание
  if(c.jump&&T>c.jump&&T-c.jump<.7){const u=(T-c.jump)/.7;dy-=Math.sin(u*Math.PI)*60}
  if(c.wob&&T-c.wob<.9){rot+=Math.sin((T-c.wob)*18)*.05*(1-(T-c.wob)/.9)}
  const y=c.y;GND.push({n:c.n,hero:1,x:c.x,feet:y,gl:y,w:w*br,h:h*br,ar:im.naturalWidth/im.naturalHeight,src:k});
- X.save();X.translate(c.x,y);const sh=IM.shadow;if(okI(sh)){X.globalAlpha=.5*(1-Math.min(.5,-dy/120));X.drawImage(sh,-w*.42,-w*.05,w*.84,w*.11);X.globalAlpha=1}
+ X.save();X.translate(c.x,y);const sh=IM.shadow;if(okI(sh)&&!c.fly){X.globalAlpha=.5*(1-Math.min(.5,-dy/120));X.drawImage(sh,-w*.42,-w*.05,w*.84,w*.11);X.globalAlpha=1}
  X.translate(0,dy);if(c.spin){X.translate(0,-h/2);X.rotate(c.spin);X.translate(0,h/2)}X.rotate(rot);X.scale(br*(c.flip?-1:1),br);
  const pf=c.pf&&T-c.pf<.18?(T-c.pf)/.18:1;X.globalAlpha=pf<1?.6+.4*pf:1;X.drawImage(im,-w/2,-h,w,h);X.globalAlpha=1;X.restore();
  if(AUD)AUD.h.push({n:c.n,b:[c.x-w/2,y-h+dy,c.x+w/2,y+dy]})}
@@ -156,13 +156,13 @@ function goalRect(){const v=vis();const n=DOTSN,dw=n?n*dotR(n)*2.3+14:0;const L=
 // 3 части: края картинки без искажений, растягивается только ровная середина (рамки, облачко, доска)
 function slice3(n,x,y,w,h,o){const i=IM[n];if(!okI(i))return;o=o||{};const sw=i.naturalWidth,sh=i.naturalHeight,k=h/sh,cs=Math.min(sw*.45,sh*(o.cap||1.1)),cd=Math.min(cs*k,w/2);
  X.save();X.translate(x,y);if(o.flip)X.scale(-1,1);if(o.a!=null)X.globalAlpha=o.a;const L=-w/2,T0=-h/2;X.drawImage(i,0,0,cs,sh,L,T0,cd,h);X.drawImage(i,cs,0,sw-2*cs,sh,L+cd-.5,T0,w-2*cd+1,h);X.drawImage(i,sw-cs,0,cs,sh,L+w-cd,T0,cd,h);X.restore()}
-function talkerX(){if(!talk)return 640;const c=cast.find(c=>c.n===talk.who&&!c.hide);if(c)return c.dx;if(talk.who==='glusha'&&CAMEO.on)return CAMEO.x;return null}
+function talkerX(){if(!talk)return 640;const c=cast.find(c=>c.n===talk.who&&!c.hide);if(c)return c.dx;if(talk.who===CAMEO.who&&CAMEO.on)return CAMEO.x;return null}
 // Глуша, которой нет на сцене, выглядывает из тучки в углу, пока говорит
-const CAMEO={on:0,a:0,x:0};
-function drawCameo(){const want=talk&&talk.who==='glusha'&&scene!=='title'&&!cast.some(c=>c.n==='glusha'&&!c.hide&&(c.k==null||c.k>.5));CAMEO.a=clamp(CAMEO.a+(want?DT*5:-DT*5),0,1);CAMEO.on=CAMEO.a>0;if(!CAMEO.on)return;
+const CAMEO={on:0,a:0,x:0,who:''};
+function drawCameo(){if(talk)CAMEO.who=talk.who;const want=talk&&['klyaksa','shur','kv'].includes(talk.who)&&scene!=='title'&&!cast.some(c=>c.n===talk.who&&!c.hide);CAMEO.a=clamp(CAMEO.a+(want?DT*5:-DT*5),0,1);CAMEO.on=CAMEO.a>0;if(!CAMEO.on)return;
  const e=ease(CAMEO.a),w=230,x=safeR()-w/2-6,y=safeT()+250;CAMEO.x=x;
  X.save();X.translate(x,y);X.scale(.6+.4*e,.6+.4*e);X.globalAlpha=e;
- const gh=190;X.save();X.beginPath();X.rect(-w,-gh*1.4,w*2,gh*1.15);X.clip();spr('glusha_laugh',Math.sin(T*2)*5,-gh*.1-Math.abs(Math.sin(T*4.5))*6,gh,{ay:.5});X.restore();
+ const gh=190;X.save();X.beginPath();X.rect(-w,-gh*1.4,w*2,gh*1.15);X.clip();spr(CAMEO.who==='klyaksa'?'klyaksa':CAMEO.who,Math.sin(T*2)*5,-gh*.1-Math.abs(Math.sin(T*4.5))*6,gh,{ay:.5});X.restore();
  sprW('puff',0,gh*.12,w);X.restore()}
 function drawTalk(){const v=vis();
  if(talk&&talk.text){const tx=talkerX();const mx=Math.min(1100,v.w*.78,safeR()-safeL()-140);const nm=NAMES[talk.who],tr=nm?.6:.66,tc=nm?.57:.47;let bw=Math.min(640,mx),bh=nm?160:150,f;
@@ -187,11 +187,12 @@ C.addEventListener('pointerdown',e=>{if(PORTRAIT())return;e.preventDefault();ac(
  for(let i=UI.length-1;i>=0;i--){const b=UI[i];const dx=Math.abs(x-b.x),dy=Math.abs(y-b.y);if(dx<Math.max(b.w/2+6,mh)&&dy<Math.max(b.h/2+6,mh)){const inside=dx<b.w/2+6&&dy<b.h/2+6;const d=(inside?0:1e5)+Math.hypot(dx,dy);if(d<bd){bd=d;best=b}}}
  if(best){const b=best;if(b.dis)return;if(locked()&&!b.always)return;SFX.click();b.fn();return}
  if(talk&&talk.box&&skipTalk){const[bx,by,bw,bh]=talk.box;if(x>bx&&x<bx+bw&&y>by&&y<by+bh){skipTalk();return}}
- if(!(typeof DRG!=='undefined'&&(DRG.drag||DRG.sel))&&heroTap(x,y))return;
+ if(!locked()&&SCN&&SCN.tapFirst&&SCN.tapFirst(x,y))return;
+ if(heroTap(x,y))return;
  if(locked())return;if(SCN&&SCN.tap)SCN.tap(x,y)},{passive:false});
 // нажал на героя — он подпрыгивает
 function heroTap(x,y){for(const c of [...cast].reverse()){if(c.dx==null||c.hide)continue;const w=heroX(c),h=c.h*(c.k||1);if(Math.abs(x-c.dx)<w/2*.8&&y<c.y&&y>c.y-h*.95){if(SCN&&SCN.onHero&&SCN.onHero(c.n)===true)return true;if(c.jump&&T-c.jump<.7)return true;c.jump=T;(HEROSND[c.n]||SFX.pop)();return true}}return false}
-const HEROSND={lira:()=>SFX.strum(),kov:()=>SFX.thump(),dzin:()=>SFX.bell(),glusha:()=>SFX.grumble()};
+const HEROSND={varya:()=>SFX.strum(),kv:()=>SFX.thump(),shur:()=>SFX.bell(),klyaksa:()=>SFX.giggle(),snail:()=>SFX.squeak(),granny:()=>SFX.pop(),zebra:()=>SFX.clink(),cirkul:()=>SFX.gear()};
 C.addEventListener('pointermove',e=>{const[x,y]=toD(e);PX=x;PY=y;if(PTR.has(e.pointerId)){PTR.get(e.pointerId).x=x;PTR.get(e.pointerId).y=y}if(SCN&&SCN.move)SCN.move(e.pointerId,x,y)});
 const _up=e=>{PTR.delete(e.pointerId);if(SCN&&SCN.up)SCN.up(e.pointerId)};C.addEventListener('pointerup',_up);C.addEventListener('pointercancel',_up);C.addEventListener('pointerleave',_up);
 ['dblclick','contextmenu','gesturestart','gesturechange'].forEach(ev=>document.addEventListener(ev,e=>e.preventDefault(),{passive:false}));
@@ -218,7 +219,7 @@ Object.defineProperty(G,'scene',{get:()=>scene});G.go=(n,a)=>go(n,a);G.S=()=>SV;
 G.Z=()=>ZS;G.talk=()=>talk;
 function loadFrac(){const n=LOADQ.filter(i=>i.src).length||1,d=LOADQ.filter(i=>i.src&&(i.complete)).length;return Math.min(1,d/n)}
 SC.load={draw(){const v=vis();X.fillStyle='#1a1850';X.fillRect(v.x0,v.y0,v.w,v.h);const tb=IM.bg_title;if(okI(tb)){X.globalAlpha=.6;bgDraw('title');X.globalAlpha=1}
- const f=loadFrac(),fs=64;X.font=fs+'px '+(FONTOK?FONT:'serif');X.textAlign='center';X.textBaseline='middle';X.lineWidth=10;X.strokeStyle='#5a1a0a';X.fillStyle='#fff3d6';X.strokeText('Звёздная песня',640,300);X.fillText('Звёздная песня',640,300);
+ const f=loadFrac(),fs=64;X.font=fs+'px '+(FONTOK?FONT:'serif');X.textAlign='center';X.textBaseline='middle';X.lineWidth=10;X.strokeStyle='#5a1a0a';X.fillStyle='#fff3d6';X.strokeText('Варя и Тетрадная страна',640,300);X.fillText('Варя и Тетрадная страна',640,300);
  const bw=Math.min(700,v.w-80),bh=30,bx=640-bw/2,by=390;X.fillStyle='rgba(40,20,8,.6)';X.beginPath();X.roundRect(bx-5,by-5,bw+10,bh+10,(bh+10)/2);X.fill();X.fillStyle='#ffcf4a';X.beginPath();X.roundRect(bx,by,Math.max(bh,bw*f),bh,bh/2);X.fill()}};
 function startGame(){scene='load';SCN=SC.load;fade=0;requestAnimationFrame(loop);
  (document.fonts&&document.fonts.load?Promise.race([Promise.all([document.fonts.load('40px FairyLogo'),document.fonts.load('40px Pangolin'),document.fonts.load('900 40px NunitoLogo')]),new Promise(r=>setTimeout(r,6000))]):Promise.resolve()).then(()=>{FONTOK=true});
