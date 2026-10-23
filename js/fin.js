@@ -17,7 +17,7 @@ SC.fin={enter(){const z=zoneStart(6,{cols:0,rw:210,k:-1,ph:'intro',col:[],ci:-1}
   placeCast(g);const kl=HR('klyaksa');drawCast();
   if(z.rb){const u=clamp((T-z.rb)/(G.fast?.01:1.2),0,1);const w=Math.min(900,g.cols*g.cs*1.1);X.save();X.globalAlpha=ease(u);sprW('rainbow',g.mid,g.y0-w/aspect('rainbow')*.35,w);X.restore()}},
  ui(){const z=ZS;if(z.ph==='medal'){const v=vis(),u=clamp((T-z.md)/(G.fast?.01:.8),0,1);X.save();X.globalAlpha=.55*u;X.fillStyle='#14184a';X.fillRect(v.x0,v.y0,v.w,v.h);X.restore();
-   const mh=Math.min(300,v.h*.42),cx=(safeL()+safeR())/2,cy=safeT()+190+mh/2;X.save();X.translate(cx,cy);X.scale(ease(u),ease(u));X.rotate(Math.sin(T*1.5)*.05);spr('medal',0,0,mh);X.restore();
-   plaque('Мастер клеточек',cx,cy+mh/2+40,Math.min(560,v.w*.5),{sp:'lplank',h:90,size:52,id:'medt',iw:.84,ih:.7});
+   const top=safeT()+16,bot=safeB()-118,mh=clamp(bot-top-98,150,300),cx=(safeL()+safeR())/2,cy=top+mh/2;X.save();X.translate(cx,cy);X.scale(ease(u),ease(u));X.rotate(Math.sin(T*1.5)*.05);spr('medal',0,0,mh);X.restore();
+   plaque('Мастер клеточек',cx,cy+mh/2+46,Math.min(560,v.w*.5),{sp:'lplank',h:90,size:52,id:'medt',iw:.84,ih:.7});
    if(z.done){boardBtn('again',cx-170,safeB()-56,280,'Ещё раз',()=>{SV={stars:[0,0,0,0,0],open:1,intro:1,fin:0,sec:[0,0,0,0,0],at:0};save();go('map')},{size:48});boardBtn('tomap',cx+170,safeB()-56,280,'На карту',()=>go('map'),{size:48})}}},
  taps(ok){const z=ZS;if(z.ph!=='play')return['wait'];if(!ok)return[];const g=GR();return[[g.cx(z.o+z.ci),g.cy(2)]]}};

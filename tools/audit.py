@@ -5,7 +5,7 @@ URL=os.environ.get('URL','http://127.0.0.1:18770/index.html')
 VPS=[(844,390),(667,375),(932,430)]
 if os.environ.get('VPS'):VPS=[tuple(map(int,v.split('x'))) for v in os.environ['VPS'].split(',')]
 STATES=[('title',''),('intro',''),('map',''),('map','SV.sec=[1,1,1,1,1]'),('l1','G.fast=true'),('l2','G.fast=true'),('l3','G.fast=true'),('l4','G.fast=true'),('l5','G.fast=true'),('fin','G.fast=true'),
- ('fin','ZS.ph="medal";ZS.medal=T;ZS.done=true;GOAL="";pose("glusha","kind")'),('bonus','G.fast=true')]
+ ('fin','ZS.ph="medal";ZS.md=T;ZS.done=true;GOAL=""'),('l2','G.fast=true;SV.sec[1]=0;ZS.sec.got=0;ZS.sec.on=T;ZS.sec.open=T-3'),('album','')]
 async def main():
   F=[];N=0
   async with async_playwright() as p:
@@ -21,7 +21,7 @@ async def main():
         await pg.wait_for_timeout(3000)
         for rep in range(2):
           await pg.evaluate('G.auditReq=1');await pg.wait_for_timeout(120)
-          A=await pg.evaluate('({a:G._aud,v:vis(),g:GND})');v=A['v']
+          A=await pg.evaluate('({a:G._aud,v:vis(),g:GND,S:S})');v=A['v']
           for t in A['a']['t']:
             x0,y0,x1,y1=t['b'];N+=1;pad=(y1-y0)*.18;y0+=pad;y1-=pad
             if x0<v['x0']-1 or x1>v['x0']+v['w']+1 or y0<v['y0']-1 or y1>v['y0']+v['h']+1:F.append(f"{W}x{H} {sc}#{i} text '{t['id']}' off-screen")
@@ -32,6 +32,7 @@ async def main():
           for g in A['g']:
             if g.get('hero'):
               if abs(g['feet']-g['gl'])>2:F.append(f"{W}x{H} {sc}#{i} hero {g['n']} floating {g['feet']-g['gl']:.1f}")
+              if g['h']*A['S']<H*.24 and g['n'] in ('varya','kv','klyaksa') and g['n']!='kv':F.append(f"{W}x{H} {sc}#{i} hero {g['n']} small {g['h']*A['S']:.0f}css")
               if abs(g['w']/g['h']-g['ar'])>0.01:F.append(f"{W}x{H} {sc}#{i} hero {g['n']} stretched")
               if g['x']-g['w']/2<v['x0']-1 or g['x']+g['w']/2>v['x0']+v['w']+1:F.append(f"{W}x{H} {sc}#{i} hero {g['n']} cut by screen edge")
           if rep==0:
