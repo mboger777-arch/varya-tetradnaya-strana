@@ -65,14 +65,14 @@ function drawHint(g,h){const a=clamp((T-h.t)/(G.fast?.01:.4),0,1);X.save();X.glo
  for(const[c,r0,n] of h.cols||[]){X.fillStyle='rgba(120,200,255,.28)';rr(g.x0+c*g.cs+3,g.y0+r0*g.cs+3,g.cs-6,(h.r1-r0+1)*g.cs-6,10);X.fill();badge(g.cx(c),g.y0+r0*g.cs-d*.6,d,n,'#3a8ae0')}X.restore()}
 function badge(x,y,d,n,col){X.save();X.fillStyle=col||'#ff8a1e';X.strokeStyle='#fff';X.lineWidth=4;X.beginPath();X.arc(x,y,d/2,0,7);X.fill();X.stroke();X.restore();txt(String(n),x,y+2,d*.66,'#fff',{f:NUM,st:'#5a2a00',lw:5,box:[x-d*.6,y-d*.6,x+d*.6,y+d*.6],id:'badge'})}
 // ---- герои на поле ----
-function fieldCast(npc,o){o=o||{};const g0=GR();cast=[hero('varya',0,{z:1}),hero('kv',0,{z:1}),hero('shur',0,{fly:1,z:5000})];if(npc)cast.push(hero(npc,0,{z:2,npc:1}));
+function fieldCast(npc,o){o=o||{};const g0=GR();cast=[hero('varya',0,{z:1}),hero('kv',0,{z:1}),hero('shur',0,{z:5000})];if(npc)cast.push(hero(npc,0,{z:2,npc:1}));
  ZS.v={c:o.vc||0,r:o.vr==null?3:o.vr,pc:o.vc||0,pr:o.vr==null?3:o.vr,t0:0,t1:0};ZS.k={c:(o.vc||0)-1,r:o.vr==null?3:o.vr,pc:(o.vc||0)-1,pr:o.vr==null?3:o.vr,t0:0,t1:0};ZS.q=[];ZS.good=[ZS.v.c,ZS.v.r];ZS.gp=[ZS.k.c,ZS.k.r]}
 function tw(o,g){const u=o.t1>o.t0?clamp((T-o.t0)/(o.t1-o.t0),0,1):1;const e=u<1?u:1;return{x:g.cx(lerp(o.pc,o.c,e)),y:g.cy(lerp(o.pr,o.r,e)),u,moving:u<1}}
 function placeCast(g){const z=ZS;const v=HR('varya'),k=HR('kv'),s=HR('shur'),n=cast.find(c=>c.npc);
  const vp=tw(z.v,g);v.h=Math.min(290,g.cs*3.5);v.x=vp.x;v.gy=vp.y+g.cs*.34;v.bob=vp.moving?Math.abs(Math.sin(vp.u*Math.PI))*g.cs*.18:0;v.z=v.gy;
  if(vp.moving&&z.v.c!==z.v.pc)v.flip=z.v.c<z.v.pc;
  if(k){const kp=tw(z.k,g);k.h=g.cs*1.75;k.x=kp.x;k.gy=kp.y+g.cs*.36;k.bob=kp.moving?Math.abs(Math.sin(kp.u*Math.PI*2))*g.cs*.12:0;k.z=k.gy-1;if(kp.moving&&z.k.c!==z.k.pc)k.flip=z.k.c<z.k.pc}
- if(s){s.h=g.cs*1.7;const tx=clamp(v.x-g.cs*1.6,safeL()+s.h*.4,g.R-s.h*.4);s.x=s.x?lerp(s.x,tx,Math.min(1,DT*2)):tx;s.gy=Math.min(g.y0-6,v.gy-v.h*.62)+Math.sin(T*2.4)*8;}
+ if(s){s.h=Math.min(250,g.cs*2.3);const sw=heroBW(s);s.x=safeR()-sw/2-10;s.gy=g.y0+2;s.z=5000;s.bob=0;}
  if(n){n.h=Math.min(330,g.cs*3.3);const w=heroBW(n);n.x=Math.max(g.R+w*.42,safeR()-w/2-6);n.gy=g.y0+3.75*g.cs;n.z=n.gy}}
 // ---- задания: ходьба / раскраска / выбор ответа / выбор предмета ----
 function task(o){const z=ZS;return new Promise(res=>{z.si++;z.hint=null;z.eq='';const t=Object.assign({P:new Map(),W:new Set(),T:new Set(),N:new Set(),res,cnt:0,okd:0},o);
@@ -170,7 +170,7 @@ SC.title={enter(){cast=[];musMenu()},
  draw(){bgDraw('title');const[lx0,ly0]=bgXY(640,118);const lw=Math.min(860,(safeR()-safeL())*.7);const lh=130;const lx=clamp(lx0,safeL()+lw/2,safeR()-lw/2),ly=Math.max(safeT()+lh/2+6,ly0);
   X.save();X.translate(lx,ly);X.rotate(Math.sin(T*1.1)*.012);slice3('lplank',0,0,lw,lh,{cap:1.3});X.restore();
   textIn('Варя и Тетрадная страна',lx,ly-2,lw*.82,lh*.62,76,'#fff6dc',{f:FONT,st:'#3a1a06',lw:9,id:'logo'});
-  textIn('игра про клеточки',lx,ly+lh/2+30,lw*.8,52,46,'#fff36a',{f:FONT,st:'#1d3b8a',lw:8,id:'logo2'});
+  textIn('игра про клеточки',lx+lw*.2,ly+lh/2+30,lw*.6,52,46,'#fff36a',{f:FONT,st:'#1d3b8a',lw:8,id:'logo2'});
   // клеточки-светлячки вокруг названия
   for(let i=0;i<7;i++){const a=T*.6+i*0.9;const x=lx+Math.cos(a)*lw*.56,y=ly+Math.sin(a*1.3)*lh*.9;X.save();X.globalAlpha=.6+.4*Math.sin(T*3+i);X.fillStyle=`hsl(${HUE[i]},85%,65%)`;X.strokeStyle='#fff';X.lineWidth=3;rr(x-11,y-11,22,22,5);X.fill();X.stroke();X.restore()}},
  ui(){const[bx,by]=bgXY(1115,470);boardBtn('play',clamp(bx,safeL()+200,safeR()-180),clamp(by,safeT()+260,safeB()-80),340,'Играть',()=>{ac();if(!SV.intro)go('intro');else go('map')},{pulse:1,size:72});
@@ -197,7 +197,7 @@ SC.map={enter(){cast=[hero('varya',0,{h:170})];GOAL='';musMenu();ZS=null;SC.map.
  draw(){const m=drawMapBg();const M=SC.map;
   // дорожка из клеточек между островами
   for(let i=0;i<5;i++){const[a,b]=[M.pt(i),M.pt(i+1)];const L=Math.hypot(b[0]-a[0],b[1]-a[1]),n=Math.floor(L/(34*m.k+8));for(let j=1;j<n;j++){const x=lerp(a[0],b[0],j/n),y=lerp(a[1],b[1],j/n);const done=SV.stars[i];X.save();X.fillStyle=done?`hsl(${HUE[(i+j)%8]},80%,66%)`:'rgba(255,250,235,.9)';X.strokeStyle='#5a7fc8';X.lineWidth=3;const d=24*m.k+4;rr(x-d/2,y-d/2,d,d,4);X.fill();X.stroke();X.restore()}}
-  const v=cast[0];v.h=Math.min(190,190*m.k*1.2);let p=M.pt(M.at),bob=0;
+  const v=cast[0];v.h=clamp(300*m.k+50,200,330);let p=M.pt(M.at),bob=0;
   if(M.mv){const mv=M.mv,u=clamp((T-mv.t0)/mv.d,0,1);const seg=Math.min(mv.path.length-2,Math.floor(u*(mv.path.length-1))),f=u*(mv.path.length-1)-seg;const a=M.pt(mv.path[seg]),b=M.pt(mv.path[seg+1]);p=[lerp(a[0],b[0],f),lerp(a[1],b[1],f)];bob=Math.abs(Math.sin(f*Math.PI*3))*24;v.flip=b[0]<a[0];
    if(u>=1&&!mv.gone){mv.gone=1;SV.at=mv.path[mv.path.length-1];save();go(mv.sc)}}
   v.x=p[0];v.gy=p[1];v.bob=bob;drawCast()},
