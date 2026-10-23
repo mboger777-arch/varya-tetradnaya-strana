@@ -259,3 +259,40 @@ Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
 Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
 Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
 Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+82 e_q3 0.25  Вряду четыре клетки, рядов три. Сколько всего?
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+83 e_bad 0.0  Гав, считай по рядам, в каждом ряду клеток поровну.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+84 e_ok1 0.5  6.  3 и 3.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+85 e_ok2 0.5  10, 5 и 5.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+86 e_ok3 0.5  12, 4, 4 и 4.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+87 e_wash 0.0  Ой, ой! Мои чернила смываются!
+manifest 88
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+88 e_win 0.0  Ох, вы все сосчитали! Я больше не буду пачкать клеточки!
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+89 f1 0.0  Простите меня! Можно, я помогу нарисовать радугу?
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+90 f2 0.0  Конечно, нажимай на клеточки, которые светятся.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+91 f3 0.0  и над тетрадной страной засияла радуга из клеточек.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+92 f4 0.0  Ты, мастер-клеточек, ты умеешь считать клетки рядами и столбиками!
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+93 f5 0.0  Спасибо, что играл с нами. До новых встреч!
+manifest 94
+VOICEDONE
