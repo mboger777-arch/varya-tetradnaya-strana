@@ -202,3 +202,53 @@ Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
 63 c_ok2 0.833  4  1, 3, 5 и 7
 manifest 64
 Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+64 c_win 0.0  Ура! Полоски вернулись!  Держи звезду!
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+65 c_kl 0.0  Ах так! А в городе окошек я все закрашу!
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+66 d1 0.0  Добро пожаловать в Город Окошек!  Я мэр, мастер циркуль!
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+67 d2 0.0  Клякса спорит, что у её домика окошек больше.  В каком домике больше окошек?
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+68 d_bad1 0.2  Посчитай окошки по рядам, сколько вряду и сколько рядов.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+69 d_ok1 0.0  Тут два ряда по три, это шесть, а там два ряда по четыре, это восемь, восемь больше.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+70 d3 0.0  Построим новую улицу, две полоски по три клетки. Пройди по ним!
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+71 d_q3 0.0  Сколько клеток в двух полосках?
+manifest 72
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+72 d_ok3 0.5  6, 3 и 3.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+73 d4 0.0  А теперь раскрась площадь.  Два ряда по три клетки.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+74 d_q4 0.0  Сколько клеток на площади?
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+75 d_ok4 0.0  Шесть секрет простой.  Считаем клетки в одном ряду и берем столько раз, сколько рядов.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+76 d_win 0.0  Город спасен, вот тебе звезда и ключ от замка кляксы.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+77 d_kl 0.0  Ключ? Ну приходите! В моём замке всё залито чернилами!
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+78 e1 0.0  Ха! Я залила клеточки чернилами. Сколько их под кляксой не узнаешь?
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+79 e2 0.0  Узнаем? Видно верхний ряд и первый столбик. Этого хватит!
+manifest 80
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+80 e_q1 0.222  Вряду три клетки, рядов два.  Сколько клеток всего?
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.

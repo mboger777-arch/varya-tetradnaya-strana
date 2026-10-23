@@ -129,7 +129,7 @@ function secOverlay(){const z=ZS,s=z.sec;if(!s||!s.open)return false;const v=vis
  if(e>.5&&Math.random()<.3)burst(cx+rnd(-80,80),cy-H*.12+rnd(-50,50),1,'spark',50,.4);
  btn('secok','b_ok',cx+W/2-60,cy+H/2-60,100,()=>{s.open=0;burst(cx,cy,40,'conf',null,.8);SFX.coin()},{always:1});return true}
 // ---- общий каркас уровня-поля ----
-function fieldScene(def){return Object.assign({
+function fieldScene(def){return Object.assign({under:def.under,
  enter(){const z=zoneStart(def.n,{cols:0,rw:def.rw});const g0=GR();z.cols=g0.cols;fieldCast(def.npc,def.start&&def.start(z.cols));secInit(def.sec(z.cols));def.music&&def.music();if(!def.music)regionMus(def.n);
   run(async()=>{await wait(350);await def.play(z,z.cols)})},
  prog(){const z=ZS,t=z.t;return z.si*10000+(t?t.P.size*100+(t.okd?50:0):0)+z.fix},

@@ -1,7 +1,7 @@
 'use strict';
 // ===== 3. Зебровая река: раскрась клетки через одну (из 5 — 3, из 7 — 4) =====
 function zebraTask(o,n,q){const T=[],A=ROW(o,1,n);for(let i=0;i<n;i+=2)T.push(K(o+i,1));return task({mode:'paint',T,A,goal:'Раскрась клетки через одну',q,skin:zebraSkin})}
-SC.l3=fieldScene({n:3,bg:'r3',npc:'zebra',steps:2,sec:c=>[c-1,0],start(c){const o=Math.max(2,Math.floor((c-7)/2));return{vc:o-2,vr:3}},
+SC.l3=fieldScene({n:3,bg:'r3',npc:'zebra',steps:2,sec:c=>[c-1,0],start(c){const o=Math.max(2,Math.floor((c-7)/2));return{vc:Math.max(1,o-2),vr:3}},
  async play(z,cols){const o=Math.max(2,Math.floor((cols-7)/2));z.o=o;z.n0=5;
   await say('c1');await zebraTask(o,5,'c2');
   await task({mode:'ask',T:[...z.t.T],A:[...z.t.A],P:z.t.P,skin:zebraSkin,opts:[2,3,4],ans:3,badLine:'c_h',eq:'1, 3, 5 — три клетки',ok:'c_ok1',goal:'Сколько клеток раскрашено?',q:'c_q1'});dot();

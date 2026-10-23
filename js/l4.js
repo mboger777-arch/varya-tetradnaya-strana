@@ -1,6 +1,6 @@
 'use strict';
 // ===== 4. Город Окошек: где больше окошек (2×3 или 2×4); две полоски по 3; площадь 2×3 =====
-SC.l4=fieldScene({n:4,bg:'r4',npc:'cirkul',steps:3,sec:c=>[c-1,0],start(c){const o=Math.max(2,Math.floor((c-9)/2));return{vc:o-2,vr:3}},
+SC.l4=fieldScene({n:4,bg:'r4',npc:'cirkul',steps:3,sec:c=>[c-1,0],start(c){const o=Math.max(2,Math.floor((c-9)/2));return{vc:Math.max(1,o-2),vr:3}},
  async play(z,cols){const o=Math.max(2,Math.floor((cols-9)/2));z.o=o;z.stage='houses';
   await say('d1');
   const H=[[o,1,3,2,'#f4a6a6'],[o+4,1,4,2,'#a6c8f4']];z.houses=H;
@@ -11,7 +11,7 @@ SC.l4=fieldScene({n:4,bg:'r4',npc:'cirkul',steps:3,sec:c=>[c-1,0],start(c){const
   z.t=null;z.hint=null;z.eq='';z.stage='street';goHome(o-1,2);await say('d3');
   await task({mode:'walk',T:[...ROW(o,2,3),...ROW(o+4,2,3)],N:[K(o-1,2),K(o+3,2),K(o+7,2)],goal:'Пройди по двум полоскам',skin:streetSkin});
   goHome(o-1,2);await task({mode:'ask',T:[...ROW(o,2,3),...ROW(o+4,2,3)],N:[K(o+3,2)],P:z.t.P,skin:streetSkin,opts:[5,6,7],ans:6,hint:{rows:[[2,o+2,3,o],[2,o+6,3,o+4]]},eq:'3 + 3 = 6',ok:'d_ok3',goal:'Сколько клеток в двух полосках?',q:'d_q3'});dot();
-  z.t=null;z.eq='';z.stage='square';goHome(o-2,3);await say('d4');
+  z.t=null;z.eq='';z.stage='square';goHome(Math.max(1,o-2),3);await say('d4');
   await task({mode:'paint',T:RECT(o+1,1,3,2),A:RECT(o,0,5,4),goal:'Раскрась площадь: два ряда по три'});
   await task({mode:'ask',T:RECT(o+1,1,3,2),P:z.t.P,opts:[5,6,8],ans:6,hint:rowHint(o+1,1,3,2),eq:'3 + 3 = 6',ok:'d_ok4',goal:'Сколько клеток на площади?',q:'d_q4'});dot();
   await winZone('d_win','d_kl')},

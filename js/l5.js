@@ -1,7 +1,7 @@
 'use strict';
 // ===== 5. Замок Кляксы: клетки под кляксой. Видно верхний ряд и первый столбик → считаем рядами =====
 const L5Q=[[3,2,[5,6,7],6,'e_q1','e_ok1','3 + 3 = 6'],[5,2,[7,10,12],10,'e_q2','e_ok2','5 + 5 = 10'],[4,3,[7,12,14],12,'e_q3','e_ok3','4 + 4 + 4 = 12']];
-SC.l5=fieldScene({n:5,bg:'r5',npc:'klyaksa',steps:3,sec:c=>[c-1,0],start(c){const o=Math.max(2,Math.floor((c-7)/2));return{vc:o-2,vr:3}},
+SC.l5=fieldScene({n:5,bg:'r5',npc:'klyaksa',steps:3,sec:c=>[c-1,0],start(c){const o=Math.max(2,Math.floor((c-7)/2));return{vc:Math.max(1,o-2),vr:3}},
  async play(z,cols){const o=Math.max(2,Math.floor((cols-7)/2));z.o=o;const kl=HR('klyaksa');kl.base='angry';
   await say('e1');await say('e2');
   for(let i=0;i<3;i++){const[w,h,opts,ans,q,ok,eq]=L5Q[i];const r0=4-h-(h<3?1:0);z.ink={c0:o,r0,w,h,t:0};
