@@ -1,7 +1,7 @@
 # Аудит текста (надпись внутри своей рамки и в видимой области), героев (на земле, без растяжения), поворот телефона.
 import asyncio,os,json
 from playwright.async_api import async_playwright
-URL=os.environ.get('URL','http://127.0.0.1:18768/index.html')
+URL=os.environ.get('URL','http://127.0.0.1:18770/index.html')
 VPS=[(844,390),(667,375),(932,430)]
 if os.environ.get('VPS'):VPS=[tuple(map(int,v.split('x'))) for v in os.environ['VPS'].split(',')]
 STATES=[('title',''),('intro',''),('map',''),('map','SV.sec=[1,1,1,1,1]'),('l1','G.fast=true'),('l2','G.fast=true'),('l3','G.fast=true'),('l4','G.fast=true'),('l5','G.fast=true'),('fin','G.fast=true'),

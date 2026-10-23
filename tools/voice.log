@@ -13,5 +13,157 @@ SoX could not be found!
 Warning: flash-attn is not installed. Will only run the manual PyTorch version. Please install flash-attn for faster inference.
 ********
  
-Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 2503.69it/s]
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 2135.86it/s]
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+0 i1 0.0  Жила была тетрадная страна. Там всё было в клеточку, и луга, и речки, и даже домики.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+1 i2 0.0  Но однажды прилетела клякса и залила клеточки чернилами.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+2 i3 0.0  Хи! Хи! Я клякса! Теперь никто не сосчитает ни одной клеточки!
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+3 i4 0.0  Я Варя. Мой волшебный карандаш раскрашивает клеточки.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+4 i5 0.0  Гав, я квадратик, мой нос учует любую спрятанную клетку.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+5 i6 0.0  А я шуршик, бумажный журавлик. Я смотрю на всё сверху.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+6 i7 0.0  Вперёд, посчитаем все клеточки и спасём страну.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+7 m1 0.0  Нажми на место на карте и я пойду туда по клеточкам.
+manifest 8
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+8 m_lock 0.0  Сначала пройдем то место, что ближе.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+9 m_fin 0.0  Клякса больше не злится, скорее на праздник.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+10 m_album 0.0  Это альбом «Наклеек».  Ищи загнутые уголки.  Там прячутся наклейки.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+11 n1 0.0  Раз.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+12 n2 0.0  Два.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+13 n3 0.5  3.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+14 n4 0.0  Четыре
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+15 n5 0.5  5.
+manifest 16
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+16 n6 0.5  6
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+17 n7 0.5  7.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+18 n8 0.5  8.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+19 n9 0.5  9.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+20 n10 0.0  Десять.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+21 n11 0.0 
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+22 n12 0.5  12
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+23 w_off 0.0  Ой, я сошла с дорожки, нажми на ластик.
+manifest 24
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+24 w_first 0.0  Сначала сотри ошибку ластиком.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+25 p_bad 0.0  Эту клеточку не надо.  Нажми на неё ещё раз или на ластик.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+26 q_bad 0.0  Гав, давай посчитаем еще раз по одной клеточке.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+27 hint 0.0  Смотрю сверху. Я подписал сколько клеток в каждом ряду.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+28 sniff 0.0  Гав-гав! Чую! Тут спрятан загнутый уголок!
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+29 sniff2 0.0  Нюх, нюх. Нажми на светящуюся клеточку.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+30 sec_ok 0.0  Секретная комната.  Наклейку в альбом.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+31 sec_all 0.0  Все пять наклеек собраны. Ты настоящий сыщик!
+manifest 32
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+32 star 0.0  Ура! Звезда наша!
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+33 a1 0.0  Здравствуй, Варя. Я улитка почтальон. Помоги отнести письмо.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+34 a2 0.0  Иди по полоске из клеточек до домика, нажимай на клетку и варя пойдет туда.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+35 a_q1 0.0  Сколько клеток в полоске?
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+36 a_ok1 0.0  Четыре. Полоска из четырех клеток.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+37 a3 0.143  Ой, мостик сломался.  Дырка длиной 5 клеточек.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+38 a4 0.0  Выбери досочку, которая закроет дырку точно.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+39 a_bad2 0.0  Эта досочка не подходит. Посчитай клеточки.
+manifest 40
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+40 a_ok2 0.0  Полоска из пяти клеток подошла точь, в точь.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+41 a_win 0.0  Спасибо.  Письмо доставлено.  Держи звезду.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+42 a_kl 0.0  Подумаешь, полоска? В огороде я всё перепутаю.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+43 b1 0.0  Ох, внученька! Клякса перепутала мои грядки. Поможешь посадить тюльпаны?
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+44 b2 0.0  Пройди по всем лункам на грядке, где пройдешь, там вырастет тюльпан.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+45 b_q1 0.0  Сколько тюльпанов выросло?
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+46 b_h1 0.0  Сверху видно. Два ряда в каждом ряду по три. Три и три.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+47 b_ok1 0.5  6. 3 и 3 это 6.
+manifest 48
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+48 b3 0.0  А теперь посчитаем столбиками.  Три столбика в каждом по два.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+49 b_q2 0.0  Два, два и два. Сколько всего?
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
 Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.

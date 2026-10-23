@@ -2,14 +2,13 @@
 import numpy as np,cv2,sys,json
 from PIL import Image
 from scipy import ndimage
-EY={'lira':[(297,180,22,25),(375,165,21,25)],'lira_point':[(222,170,20,24),(298,165,20,24)],'lira_think':[(184,154,19,23),(255,168,19,23)],
- 'kov':[(185,198,22,26),(315,190,22,26)],'kov_wow':[(163,178,24,30),(301,182,24,29)],
- 'dzin':[(208,385,30,35),(370,385,30,35)],'dzin_sad':[(209,350,30,35),(363,350,30,35)],
- 'glusha':[(175,240,26,17),(280,250,26,17)],'glusha_angry':[(175,287,26,15),(294,287,26,15)],'glusha_kind':[(171,249,24,30),(286,255,24,30)]}
+EY={'varya':[(185,147,22,18),(259,149,22,18)],'varya_cheer':[(182,156,19,17),(251,155,19,17)],'varya_point':[(207,150,20,18),(282,147,20,18)],
+ 'kv':[(152,160,30,31),(284,177,28,30)],'kv_sniff':[(385,475,32,29),(502,467,20,33)],
+ 'shur':[(183,157,27,32),(316,168,31,32)],'shur_point':[(177,180,27,34),(327,195,33,36)]}
 only=sys.argv[1:];INFO={}
-NZ={'kov':.3,'glusha':.25}
-FORCE={'kov_wow':1.18,'lira_point':1.28,'kov':1.15}
-WK={'lira':1.3,'lira_point':1.4,'lira_think':1.35,'kov_wow':1.75}
+NZ={}
+FORCE={}
+WK={}
 for n,eyes in EY.items():
   if only and n not in only:continue
   im=np.array(Image.open(f'assets/sprites/{n}.png').convert('RGBA'));H,W=im.shape[:2];rgb=im[...,:3].astype(float);al=im[...,3]

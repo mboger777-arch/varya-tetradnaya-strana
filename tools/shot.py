@@ -1,7 +1,7 @@
 # Скриншоты сцен: VP=844x390 python tools/shot.py title map z1 ...  -> shots/<vp>/<scene>.png
 import asyncio,os,sys
 from playwright.async_api import async_playwright
-URL='http://127.0.0.1:18768/index.html'
+URL='http://127.0.0.1:18770/index.html'
 async def main():
   W,H=map(int,os.environ.get('VP','844x390').split('x'));out=f'shots/{W}x{H}';os.makedirs(out,exist_ok=True)
   async with async_playwright() as p:

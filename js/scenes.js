@@ -36,8 +36,8 @@ async function winZone(line,kl){const z=ZS;z.lock=true;z.t=null;GOAL='';cheer();
  const i=z.n-1;SV.stars[i]=1;SV.open=Math.max(SV.open,Math.min(6,z.n+1));SV.at=z.n;save();z.won=1;
  await say(line);if(kl)await say(kl);await wait(400);z.done=true;z.lock=false;go('map')}
 // ---- геометрия поля: 4 ряда клеток внизу на «бумажном полу», справа — место для жителя ----
-function GR(){const z=ZS||{};const top=Math.max(bgY0()+418*bgScale(),safeT()+252),bot=safeB()-6;let cs=clamp((bot-top)/4,58,90);
- const L=safeL()+4,R=safeR()-(z.rw!=null?z.rw:200);const cols=z.cols||Math.min(14,Math.floor((R-L)/cs));cs=Math.min(cs,(R-L)/cols);const y0=bot-4*cs,x0=L+(R-L-cols*cs)/2;
+function GR(){const z=ZS||{};const top=Math.max(bgY0()+418*bgScale(),safeT()+252),bot=safeB()-6;let cs=clamp((bot-top)/4,58,112);
+ const L=safeL()+4,R=safeR()-(z.rw!=null?z.rw:200);const cols=z.cols||clamp(Math.floor((R-L)/cs),12,13);cs=Math.min(cs,(R-L)/cols);const y0=bot-4*cs,x0=L+(R-L-cols*cs)/2;
  return{x0,y0,cs,cols,rows:4,R,cx:c=>x0+(c+.5)*cs,cy:r=>y0+(r+.5)*cs,mid:x0+cols*cs/2}}
 function cellAt(x,y){const g=GR();const c=Math.floor((x-g.x0)/g.cs),r=Math.floor((y-g.y0)/g.cs);if(c<0||r<0||c>=g.cols||r>=4)return null;return[c,r]}
 // ---- поле: рисуем клетки ----
@@ -73,7 +73,7 @@ function placeCast(g){const z=ZS;const v=HR('varya'),k=HR('kv'),s=HR('shur'),n=c
  if(vp.moving&&z.v.c!==z.v.pc)v.flip=z.v.c<z.v.pc;
  if(k){const kp=tw(z.k,g);k.h=g.cs*1.75;k.x=kp.x;k.gy=kp.y+g.cs*.36;k.bob=kp.moving?Math.abs(Math.sin(kp.u*Math.PI*2))*g.cs*.12:0;k.z=k.gy-1;if(kp.moving&&z.k.c!==z.k.pc)k.flip=z.k.c<z.k.pc}
  if(s){s.h=g.cs*1.7;const tx=clamp(v.x-g.cs*1.6,safeL()+s.h*.4,g.R-s.h*.4);s.x=s.x?lerp(s.x,tx,Math.min(1,DT*2)):tx;s.gy=Math.min(g.y0-6,v.gy-v.h*.62)+Math.sin(T*2.4)*8;}
- if(n){n.h=Math.min(HEROH[n.n]||280,(HEROH[n.n]||280)*g.cs/80);const w=heroBW(n);n.x=Math.max(g.R+w*.42,safeR()-w/2-6);n.gy=g.y0+3.75*g.cs;n.z=n.gy}}
+ if(n){n.h=Math.min(330,g.cs*3.3);const w=heroBW(n);n.x=Math.max(g.R+w*.42,safeR()-w/2-6);n.gy=g.y0+3.75*g.cs;n.z=n.gy}}
 // ---- задания: ходьба / раскраска / выбор ответа / выбор предмета ----
 function task(o){const z=ZS;return new Promise(res=>{z.si++;z.hint=null;z.eq='';const t=Object.assign({P:new Map(),W:new Set(),T:new Set(),N:new Set(),res,cnt:0,okd:0},o);
  t.T=new Set(o.T||[]);t.N=new Set(o.N||[]);if(o.A)t.A=new Set(o.A);t.pop={};t.wob={};z.t=t;if(o.goal)GOAL=o.goal;if(o.showHint&&o.hint)z.hint=Object.assign({t:T},o.hint);if(o.q)say(o.q).catch(()=>{})})}
@@ -208,7 +208,7 @@ SC.map={enter(){cast=[hero('varya',0,{h:170})];GOAL='';musMenu();ZS=null;SC.map.
    if(!open)spr('lock',x,y,74);if(done)spr('star',x+w*.36,y-h*.3,66,{rot:Math.sin(T*2)*.1});if(SV.sec[i])fitSpr(STICK[i],x-w*.38,y-h*.3,54);
    plaque(z.name,x,Math.min(y+h*.5+30,safeB()-110),Math.max(200,230*m.k+40),{size:34,id:'zname',sp:'lplank',h:74,iw:.86,ih:.8,min:20})});
   {const w=5*50+30,y=safeB()-38;X.save();X.fillStyle='rgba(30,40,90,.55)';rr(640-w/2,y-30,w,60,30);X.fill();X.restore();for(let i=0;i<5;i++)spr(SV.stars[i]?'star':'star_dark',640-100+i*50,y,46)}
-  if(SV.stars.every(v=>v)){const[fx,fy]=[m.x+1150*m.k,m.y+330*m.k];boardBtn('fin',Math.min(fx,safeR()-130),fy,240,'Праздник',()=>go('fin'),{pulse:!SV.fin,size:44});if(SV.fin)spr('medal',Math.min(fx,safeR()-130)+100,fy-40,70)}
+  if(SV.stars.every(v=>v)){const[fx,fy]=[m.x+1090*m.k,Math.min(m.y+640*m.k,safeB()-60)];boardBtn('fin',Math.min(fx,safeR()-130),fy,240,'Праздник',()=>go('fin'),{pulse:!SV.fin,size:44});if(SV.fin)spr('medal',Math.min(fx,safeR()-130)+100,fy-40,70)}
   btn('album','album',safeR()-66,safeB()-70,120,()=>go('album'),{pulse:SV.sec.some(v=>v)&&!SV.albumSeen})},
  go(n,sc){const M=SC.map;if(M.mv)return;const a=M.at,path=[];if(a===n){go(sc);return}const s=Math.sign(n-a);for(let i=a;i!==n+s;i+=s)path.push(i);
   M.mv={path,t0:T,d:G.fast?.05:.55*(path.length-1),sc};SFX.zip()}};
@@ -218,11 +218,11 @@ SC.album={enter(){cast=[hero('shur',0,{fly:1})];zoneStart(0);SV.albumSeen=1;save
   const W=Math.min(v.w-240,1000),H=Math.min(v.h-210,470),cx=(safeL()+safeR())/2,cy=safeT()+190+H/2-20;
   X.save();X.shadowColor='rgba(0,0,0,.4)';X.shadowBlur=24;X.fillStyle='#fff9ea';rr(cx-W/2,cy-H/2,W,H,24);X.fill();X.restore();X.fillStyle='#e8d6b0';X.fillRect(cx-4,cy-H/2,8,H);
   X.save();X.strokeStyle='rgba(80,130,220,.25)';X.lineWidth=2;for(let x=cx-W/2+30;x<cx+W/2;x+=30){X.beginPath();X.moveTo(x,cy-H/2+8);X.lineTo(x,cy+H/2-8);X.stroke()}for(let y=cy-H/2+30;y<cy+H/2;y+=30){X.beginPath();X.moveTo(cx-W/2+8,y);X.lineTo(cx+W/2-8,y);X.stroke()}X.restore();
-  const d=Math.min(W/5.6,H*.55);for(let i=0;i<5;i++){const x=cx+(i-2)*W/5.2,y=cy-10;X.save();X.setLineDash([10,8]);X.strokeStyle='#8aa0d0';X.lineWidth=4;rr(x-d/2,y-d/2,d,d,16);X.stroke();X.restore();
+  const d=Math.min(W/5.6,H*.55);for(let i=0;i<5;i++){const x=cx+(i-2)*W/5.2,y=cy+12;X.save();X.setLineDash([10,8]);X.strokeStyle='#8aa0d0';X.lineWidth=4;rr(x-d/2,y-d/2,d,d,16);X.stroke();X.restore();
    if(SV.sec[i])fitSpr(STICK[i],x,y+Math.sin(T*2+i)*4,d*.9);else txt('?',x,y,d*.5,'#b8c4e4',{f:NUM,st:0,box:[x-d/2,y-d/2,x+d/2,y+d/2],id:'q'});
-   textIn(LVL[i].name,x,y+d/2+34,W/5.4,56,26,'#2b2440',{f:BODY,st:0,id:'alb',min:16})}
+   textIn(LVL[i].name,x,y+d/2+32,W/5.4,56,30,'#2b2440',{f:BODY,st:0,id:'alb',min:16})}
   const s=cast[0];s.h=150;s.x=safeL()+90;s.gy=safeB()-20+Math.sin(T*2)*8;drawCast();
-  textIn('Альбом наклеек',cx,safeT()+140,Math.min(560,W*.7),70,56,'#fff6dc',{f:FONT,st:'#1d3b8a',lw:8,id:'albt'})},
+  textIn('Альбом наклеек',cx,cy-H/2+48,Math.min(560,W*.7),64,52,'#1d3b8a',{f:FONT,st:'#fff',lw:6,id:'albt'})},
  ui(){}};
 function RECT(c0,r0,w,h){const o=[];for(let r=r0;r<r0+h;r++)for(let c=c0;c<c0+w;c++)o.push(K(c,r));return o}
 function ROW(c0,r,w){return RECT(c0,r,w,1)}

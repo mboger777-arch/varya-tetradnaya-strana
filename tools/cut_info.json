@@ -158,5 +158,35 @@
   "w": 545,
   "h": 839,
   "edge": false
+ },
+ "kv_sniff": {
+  "w": 597,
+  "h": 622,
+  "edge": false
+ },
+ "kv_cheer": {
+  "w": 463,
+  "h": 784,
+  "edge": false
+ },
+ "shur": {
+  "w": 505,
+  "h": 653,
+  "edge": false
+ },
+ "shur_cheer": {
+  "w": 621,
+  "h": 744,
+  "edge": false
+ },
+ "shur_point": {
+  "w": 546,
+  "h": 738,
+  "edge": false
+ },
+ "kv": {
+  "w": 512,
+  "h": 760,
+  "edge": false
  }
 }
