@@ -5,7 +5,7 @@
 - [x] Тема урока, концепт, герои v2B одобрены («собирай»)
 - [x] Арт: позы героев (varya/kv/shur/klyaksa), NPC, фоны (title, map, r1..r5, secret, fin), UI-лист
 - [x] Нарезка birefnet (tools/cut.py), моргание (tools/blink.py)
-- [~] Реплики (идёт генерация) tools/lines.py -> TTS (nohup tools/voicegen.py, лог tools/voice.log)
+- [x] Реплики (94, ASR-проверка; расхождения только цифры vs слова) tools/lines.py -> TTS (nohup tools/voicegen.py, лог tools/voice.log)
 - [x] Код: core (сетка, ходьба, следы, ластик), map, r1..r5, секретные комнаты, альбом, финал, интро, музыка
-- [ ] Тесты 844x390, 667x375, 932x430 (test_touch, audit), правки
+- [x] Тесты 844x390, 667x375, 932x430 (test_touch, audit), правки: under-слои не рисовались, Варя/Квадратик у края, медаль/кнопки финала, кнопка «Праздник», титул
 - [ ] Публикация mboger777-arch/varya-tetradnaya-strana, ?v=, проверка живого URL
