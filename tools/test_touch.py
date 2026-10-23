@@ -43,14 +43,19 @@ async def run(b,W,H,F,R):
     await pg.evaluate(f'G.go("{scn(n)}")');await pg.wait_for_timeout(700)
     await hitcheck(sc)
     if await pg.evaluate('G.locked()'):F.append(f'{tag} {sc} locked during intro voice')
-    steps=0;shot=0;t0=time.time()
+    steps=0;shot=0;t0=time.time();done_m=set()
     while not await zdone(n) and time.time()-t0<240:
       p0=await pg.evaluate('G.prog()');m0=await pg.evaluate('ZS?ZS.mist:0')
       await unlock_ms()
-      nw=await taps(False)
+      key=await pg.evaluate('G.prog()-((ZS&&ZS.fix)||0)')
+      fresh=key not in done_m
+      if not fresh:nw=0
+      else:
+        done_m.add(key);nw=await taps(False)
       if nw<0:continue
       tm=time.time()
-      if nw==0:R.append(f'{tag} {sc} step {p0}: no wrong choice possible');tm=-1e9
+      if nw==0 and fresh:R.append(f'{tag} {sc} step {p0}: no wrong choice possible')
+      if nw==0:tm=-1e9
       while await pg.evaluate('ZS?ZS.mist:0')<=m0 and time.time()-tm<3:await pg.wait_for_timeout(30)
       if nw==0:pass
       elif await pg.evaluate('ZS?ZS.mist:0')<=m0:F.append(f'{tag} {sc} step {p0}: mistake not registered')
@@ -67,6 +72,7 @@ async def run(b,W,H,F,R):
         if ok:break
       if W==844 and not shot:shot=1;await pg.wait_for_timeout(150);await pg.screenshot(path=f'{out}/{sc}_fixed.png')
       if not ok:F.append(f'{tag} {sc} step {p0}: correct answer not accepted');break
+      print(tag,sc,'step',p0,'->',await pg.evaluate('G.prog()'),flush=True)
       steps+=1
     if not await zdone(n):F.append(f'{tag} {sc} not finished')
     st=await pg.evaluate('SV.stars')
@@ -83,5 +89,5 @@ async def main():
     b=await p.chromium.launch(args=['--autoplay-policy=no-user-gesture-required'])
     for W,H in VPS:await run(b,W,H,F,R)
     await b.close()
-  print('\n'.join(R));print('FAILS:',len(F));print('\n'.join(F))
+  print('\n'.join(R));print('FAILS:',len(F));print('\n'.join(F),flush=True)
 asyncio.run(main())

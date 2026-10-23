@@ -171,3 +171,24 @@ Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
 Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
 51 b4 0.0  А вот грядка побольше. Пройди по всем лункам.
 Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+52 b_q3 0.0  Два ряда по четыре.  Сколько тюльпанов?
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+53 b_ok3 0.0  восемь, четыре и четыре, восемь.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+54 b_win 0.0  Какая красота!  Спасибо, умница, вот тебе звезда!
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+55 b_kl 0.0  Ну и ладно. А на речке я стерла все полоски.
+manifest 56
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+56 c1 0.0  Привет! Я Зебра перевозчица. Клякса стерла полоски на моих мостках.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+57 c2 0.0  Раскрась клеточки через одну.  Первую раскрась, вторую пропусти.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+58 c_q1 0.0  Сколько клеток ты раскрасила?
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+59 c_h 0.0  Посчитай только раскрашенные клеточки.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+60 c_ok1 0.0  Три. Из пяти клеток через одну. Три.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:2150 for open-end generation.
