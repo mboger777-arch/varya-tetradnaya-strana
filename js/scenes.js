@@ -188,7 +188,7 @@ SC.intro={enter(){cast=[hero('varya',0,{hide:1}),hero('kv',0,{hide:1}),hero('shu
  draw(){const z=ZS;const m=drawMapBg();for(const b of z.blots){const u=clamp((T-b.t)/(G.fast?.01:.3),0,1);spr('blot',m.x+b.x*m.k,m.y+b.y*m.k,170*m.k*(u<1?u*1.2:1),{a:.92,rot:b.x%3})}
   const g=safeB()-4,v=HR('varya'),k=HR('kv'),s=HR('shur'),kl=HR('klyaksa');v.h=Math.min(300,vis().h*.48);v.x=safeL()+v.h*.32;v.gy=g;k.h=v.h*.52;k.x=v.x+v.h*.42;k.gy=g;s.h=v.h*.5;s.x=v.x+v.h*.25;s.gy=g-v.h*.85+Math.sin(T*2.4)*8;
   kl.h=Math.min(260,vis().h*.42);const u=z.kl?clamp((T-z.kl)/(G.fast?.01:.8),0,1):0;kl.x=safeR()-kl.h*.4+(1-ease(u))*500;kl.gy=g-60+Math.sin(T*2)*14-(1-ease(u))*200;kl.fly=1;drawCast()},
- ui(){boardBtn('skip',640,safeB()-44,220,'Дальше',()=>{SV.intro=1;save();go('map')},{size:44})}};
+ ui(){boardBtn('skip',640,safeB()-44,220,'Дальше',()=>{if(skipTalk)skipTalk()},{size:44});boardBtn('skipall',safeR()-125,safeB()-40,220,'Пропустить',()=>{SV.intro=1;save();go('map')},{size:34})}};
 // ---- карта: Варя прыгает по дорожке из клеточек к выбранному месту ----
 const MAPN=[[110,640],...LVL.map(L=>[L.pos[0],L.pos[1]+70])];
 SC.map={enter(){cast=[hero('varya',0,{h:170})];GOAL='';musMenu();ZS=null;SC.map.mv=null;SC.map.at=clamp(SV.at||0,0,5);

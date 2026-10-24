@@ -62,9 +62,9 @@ function sayNow(k){stopTalk();return say(k).catch(()=>{})}
 async function say1(k){const l=LINES[k];if(!l)return;const id=++SAYID;talk={who:l.who,text:l.t,k,t0:T,id};
  if(G.fast){await new Promise(r=>setTimeout(r,40));if(talk&&talk.id===id)talk=null;return}
  const v=typeof VOICE!=='undefined'&&VOICE[k];const dur=Math.max(2000,l.t.length*70);
- await new Promise(async res=>{let done=false,a=null;const fin=()=>{if(!done){done=true;if(a){try{a.pause()}catch(e){}}if(skipTalk===sk)skipTalk=null;res()}};const sk=()=>fin();skipTalk=sk;setTimeout(fin,((v&&v[1])||0)*1000+dur+4000);
+ await new Promise(async res=>{let done=false,a=null;const fin=()=>{if(!done){done=true;if(a){try{a.pause()}catch(e){}}if(skipTalk===sk)skipTalk=null;res()}};const sk=()=>fin();skipTalk=sk;setTimeout(fin,((v&&v[1])||0)*3000+dur+15000);
   if(v&&!G.mute){a=new Audio('assets/voice/'+v[0]);a.onended=()=>setTimeout(fin,300);a.onerror=()=>setTimeout(fin,dur);let ok=true;try{await a.play()}catch(e){ok=false}
-   if(done)return;if(ok)setTimeout(fin,(v[1]+2.5)*1000);else setTimeout(fin,dur)}else setTimeout(fin,dur)});
+   if(done)return;if(!ok){setTimeout(fin,dur);return}let lt=-1,st=Date.now();const wd=()=>{if(done)return;if(a.ended){setTimeout(fin,300);return}if(a.currentTime!==lt){lt=a.currentTime;st=Date.now()}else if(Date.now()-st>6000){fin();return}setTimeout(wd,500)};setTimeout(wd,500)}else setTimeout(fin,dur)});
  if(talk&&talk.id===id)talk=null}
 async function run(fn){G._busy++;try{await fn()}catch(e){if(e!==STALE)console.error(e)}finally{G._busy--}}
 // ---- частицы ----
